@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: PingFangSC-Light, 微软雅黑;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+    background: url('../imgs/bg.png') no-repeat;
+    background-size: 100% 100%;
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+
+/* 头部标题 */
+.header{
+    width: 100%;
+    height: 80px;
+    padding:0 20px;
+}
+.bg_header{
+    width: 100%;
+    height: 80px;
+    background: url('../imgs/title.png') no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+.t_title{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 3em;
+    line-height: 80px;
+    color: #30e9f6;
+    position: absolute;
+}
+/* 分页按钮 */
+.subboard_left{width: 33%;float: left;padding-left: 5%;padding-top: 0.2%;}
+.subboard_left li {background-color:#4288f8; font-size: 16px;width:15%;height:25px;text-align: center;float: left;margin-left: 1%}
+.subboard_left li a{color: #fff;z-index: 5;position: relative;}
+.subboard_left li.active,.subboard_right li.active{background-color:#2525f2;}
+.subboard_right{width: 33%;float: right;padding-right: 5%;padding-top: 0.2%;}
+.subboard_right li {background-color:#4288f8; font-size: 16px;width:15%;height:25px;text-align: center;float: right;margin-left: 1%}
+.subboard_right li a{color: #fff;}
+
+/* 图表 */
+.charts {
+    width: 90%;
+    height: 730px;
+    margin-left: 5%;
+    margin-top: 5px;
+}
+.chartTiles{
+    color: #0bf9f7;
+    text-align: center;
+    font-size: 20px;
+}
+
+.c1c{
+    width: 400px;
+    height: 200px;
+    border: 3px solid #2C58A6;
+}
+.c2c{
+    width: 400px;
+    height: 230px;
+    border: 3px solid #2C58A6;
+}
+.c3c{
+    width: 400px;
+    height: 280px;
+    border: 3px solid #2C58A6;
+}
+.c4c{
+    width: 680px;
+    height: 435px;
+    border: 3px solid #2C58A6;
+    position: relative;
+    bottom: 725px;
+    left: 410px;
+}
+.c5c{
+    width: 680px;
+    height: 280px;
+    border: 3px solid #2C58A6;
+    position: relative;
+    bottom: 725px;
+    left: 410px;
+}
+.c6c{
+    width: 410px;
+    height: 179px;
+    border: 3px solid #2C58A6;
+    position: relative;
+    bottom: 1450px;
+    left: 1100px;
+}
+.c7c{
+    width: 410px;
+    height: 230px;
+    border: 3px solid #2C58A6;
+    position: relative;
+    bottom: 1450px;
+    left: 1100px;
+}
+.c8c{
+    width: 410px;
+    height: 302px;
+    border: 3px solid #2C58A6;
+    position: relative;
+    bottom: 1450px;
+    left: 1100px;
+}
+

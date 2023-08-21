@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>淘优购销售大屏</title>
+    <script src="js/echarts.min.js" charset="utf-8"></script>
+    <script src="js/jquery-2.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/charts.js"></script>
+    <script type="module" src="js/liquidFill.js"></script>
+    <link rel="stylesheet" href="css/dash.css">
+</head>
+
+<body>
+    <!--header-->
+    <div class="header">
+        <div class="bg_header">
+            <div class="t_title">
+                淘优购销售大屏
+            </div>
+            
+            <div class="subboard_left">
+                <ul>
+                    <li><a href="./Tdashboard.html">市场竞争</a></li>
+                    <li><a href="./Tdashboard.html">客户画像</a></li>
+                    <li><a href="./Tdashboard.html">库存物流</a></li>
+                </ul>
+            </div>
+            <div class="subboard_right">
+                <ul>
+                    <li><a href="./Tdashboard.html">客户转化</a></li>
+                    <li class="active"><a href="./Tdashboard.html">销售数据</a></li>
+                    <li><a href="./Tdashboard.html">舆情分析</a></li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+
+    <!--charts-->
+    <div class="charts">
+        <div class="c1c">
+            <div class="chartTiles">全年销售达标比</div>
+            <div id="c1" style="width: 400px;height:190px"></div>
+        </div>
+        <div class="c2c">
+            <div class="chartTiles">商品类别销售额占比</div>
+            <div id="c2" style="width: 400px;height:220px"></div>
+        </div>
+        <div class="c3c">
+            <div class="chartTiles">各产品类别优秀商家数</div>
+            <div id="c3" style="width: 400px;height:250px"></div>
+        </div>
+        <div class="c4c">
+            <div class="chartTiles">全国销量分布</div>
+            <div id="c4" style="width: 680px;height:410px"></div>
+        </div>
+        <div class="c5c">
+            <div class="chartTiles">每月访客总量</div>
+            <div id="c5" style="width: 680px;height:260px"></div>
+        </div>
+        <div class="c6c">
+            <div class="chartTiles">历史年份总销量</div>
+            <div id="c6" style="width: 420px;height:200px;bottom: 15px"></div>
+        </div>
+        <div class="c7c">
+            <div class="chartTiles">各季度销量占比</div>
+            <div id="c7" style="width: 420px;height:200px"></div>
+        </div>
+        <div class="c8c">
+            <div class="chartTiles">购买时间气泡分布</div>
+            <div id="c8" style="width: 420px;height:270px"></div>
+        </div>
+    </div>
+
+    <!-- Draw charts using E-Charts -->
+    <script type="text/javascript">
+        var myChart1 = echarts.init(document.getElementById('c1'))
+        option1 = {
+            series: [{
+                type: 'gauge',
+                itemStyle: {
+                    color: '#00FFFF',
+                },
+                progress: {
+                    show: true,
+                    width: 10
+                },
+                axisLine: {
+                    lineStyle: {
+                    width: 10
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+                splitLine: {
+                    length: 5,
+                    lineStyle: {
+                        width: 1,
+                        color: '#fff'
+                    }
+                },
+                axisLabel: {
+                    distance: 20,
+                    color: '#fff',
+                    fontSize: 10
+                },
+                anchor: {
+                    show: true,
+                    showAbove: true,
+                    size: 20,
+                    itemStyle: {
+                    borderWidth: 10
+                    }
+                },
+                title: {
+                    show: false
+                },
+                detail: {
+                    valueAnimation: true,
+                    fontSize: 40,
+                    color:'#0bf9f7',
+                    offsetCenter: [0, '85%']
+                },
+                data: [
+                    {
+                        value: 92
+                    }
+                ]
+            }]
+        }
+        option1 && myChart1.setOption(option1)
+    </script>
+    <script>
+        var myChart2 = echarts.init(document.getElementById('c2'))
+        var option2 = {
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'right',
+                textStyle: {
+                    color: '#0bf9f7'
+                }
+            },
+            series: [
+                {
+                name: '销量',
+                type: 'pie',
+                radius: ['40%', '70%'],
+                color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C', '#90EE90', '#EED2EE'],
+                itemStyle: {
+                    borderRadius: 10,
+                    borderWidth: 2
+                },
+                label: {
+                    show: false
+                },
+                data: [
+                    { value: 6869760, name: '食品' },
+                    { value: 9265782, name: '服装' },
+                    { value: 3189678, name: '家具' },
+                    { value: 7496553, name: '电子' },
+                    { value: 5176927, name: '玩具' },
+                    { value: 1239421, name: '饰品' }
+                ],
+                emphasis: {
+                    itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+                }
+            ]
+        }
+        option2 && myChart2.setOption(option2)
+    </script>
+    <script>
+        var myChart3 = echarts.init(document.getElementById('c3'))
+        option3 = {
+            color: ['#67F9D8', '#FFE434'],
+            
+            legend: {
+                data: ['期望优秀商家数量', '实际优秀商家数量'],
+                orient: 'vertical',
+                left: 'right',
+                textStyle: {
+                    color: '#0bf9f7'
+                }
+            },
+            radar: {
+                indicator: [
+                    { name: '食品', max: 5000 },
+                    { name: '服装', max: 5000 },
+                    { name: '家具', max: 5000 },
+                    { name: '电子', max: 5000 },
+                    { name: '玩具', max: 5000 },
+                    { name: '饰品', max: 5000 }
+                ],
+                axisName: {
+                    color: '#ffffff'
+                },
+            },
+            series: [{
+                name: '',
+                type: 'radar',
+                tooltip: {
+                    trigger: 'item'
+                },
+                areaStyle: {},
+                data: [{
+                    value: [4200, 4200, 4200, 4200, 4200, 4200],
+                    name: '期望优秀商家数量'
+                    },{
+                    value: [4971, 4563, 2196, 3208, 1764, 2950],
+                    name: '实际优秀商家数量'
+                    }
+                ]
+            }]
+        }
+        myChart3.setOption(option3)
+    </script>
+    <script type="text/javascript" src="js/china.js"></script>
+    <script>
+        let dataList = [
+            {
+            name: "北京",
+            value: 54000000,
+            },
+            {
+            name: "南海诸岛",
+            value: 10000,
+            },
+            {
+            name: "天津",
+            value: 530000,
+            },
+            {
+            name: "上海",
+            value: 90000000,
+            },
+            {
+            name: "重庆",
+            value: 7500000,
+            },
+            {
+            name: "河北",
+            value: 6300000,
+            },
+            {
+            name: "河南",
+            value: 830000,
+            },
+            {
+            name: "云南",
+            value: 110000,
+            },
+            {
+            name: "辽宁",
+            value: 390000,
+            },
+            {
+            name: "黑龙江",
+            value: 150000,
+            },
+            {
+            name: "湖南",
+            value: 690000,
+            },
+            {
+            name: "安徽",
+            value: 6000000,
+            },
+            {
+            name: "山东",
+            value: 390000,
+            },
+            {
+            name: "新疆",
+            value: 100000,
+            },
+            {
+            name: "江苏",
+            value: 310000,
+            },
+            {
+            name: "浙江",
+            value: 10400000,
+            },
+            {
+            name: "江西",
+            value: 360000,
+            },
+            {
+            name: "湖北",
+            value: 1052000,
+            },
+            {
+            name: "广西",
+            value: 330000,
+            },
+            {
+            name: "甘肃",
+            value: 70000,
+            },
+            {
+            name: "山西",
+            value: 90000,
+            },
+            {
+            name: "内蒙古",
+            value: 70000,
+            },
+            {
+            name: "陕西",
+            value: 220000,
+            },
+            {
+            name: "吉林",
+            value: 400000,
+            },
+            {
+            name: "福建",
+            value: 180000,
+            },
+            {
+            name: "贵州",
+            value: 50000,
+            },
+            {
+            name: "广东",
+            value: 98000000,
+            },
+            {
+            name: "青海",
+            value: 60000,
+            },
+            {
+            name: "西藏",
+            value: 20000,
+            },
+            {
+            name: "四川",
+            value: 4400000,
+            },
+            {
+            name: "宁夏",
+            value: 40000,
+            },
+            {
+            name: "海南",
+            value: 22000,
+            },
+            {
+            name: "台湾",
+            value: 30000,
+            },
+            {
+            name: "香港",
+            value: 50000,
+            },
+            {
+            name: "澳门",
+            value: 50000,
+            },
+        ]
+        let myChart4 = echarts.init(document.getElementById('c4'))
+        let options4 = {
+            tooltip: {
+                triggerOn: "click",
+                formatter: function(e, t, n) {
+                    return e.seriesName + "<br />" + e.name + "：" + e.value
+                },
+            },
+            visualMap: {
+                min: 10000,
+                max: 10000000,
+                left: 20,
+                bottom: 20,
+                textStyle: {
+                    color: "#fff",
+                },
+                pieces: [
+                    {
+                        gt: 10000000,
+                        label: ">10000000",
+                        color: "#3763f1",
+                    },
+                    {
+                        gte: 1000000,
+                        lte: 10000000,
+                        label: "1000000-10000000",
+                        color: "#0d90f2",
+                    },
+                    {
+                        gte: 10001,
+                        lt: 1000000,
+                        label: "100000-1000000",
+                        color: "#21dbe4",
+                    },
+                    {
+                        gte: 10000,
+                        lt: 100000,
+                        label: "10000-100000",
+                        color: "#1beec1",
+                    },
+                ],
+            },
+            series: [{
+                name: "销量",
+                data: dataList,
+                type: "map",
+                map: "china",
+                zoom: 1.2,
+                aspectScale: 0.75,
+                label: {
+                    normal: {
+                        color: "white",
+                        show: true,
+                    },
+                    emphasis: {
+                        color: "yellow",
+                        fontSize: 22,
+                        fontWeight: "bold",
+                    },
+                },
+                itemStyle: {
+                    normal: {
+                        areaColor: "transparent",
+                        borderColor: "rgba(39,211,233, 1)",
+                        borderWidth: 1,
+                    },
+                    emphasis: {
+                        areaColor: "#01ADF2",
+                    },
+                },
+            },],
+        }
+        myChart4.setOption(options4)
+        // 添加窗口大小改变监听事件，当窗口大小改变时，图表会重新绘制，自适应窗口大小
+        window.addEventListener("resize", function() {
+            myChart4.resize()
+        })
+            
+    </script>
+    <script>
+        var myChart5 = echarts.init(document.getElementById('c5'))
+        option5 = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
+            },
+            legend: {
+                data: ['PV', 'UV'],
+                textStyle: {
+                    color: '#0bf9f7'
+                }
+            },
+            toolbox: {
+                feature: {
+                saveAsImage: {}
+            }},
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [{
+                type: 'category',
+                boundaryGap: false,
+                data: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                }
+            }],
+            yAxis: [{
+                type: 'value',
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                }
+            }],
+            series: [{
+                name: 'PV',
+                type: 'line',
+                stack: 'Total',
+                areaStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgb(0, 255, 255)'
+                    },{
+                        offset: 1,
+                        color: 'rgb(0, 191, 255)'
+                    }])
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [320000, 432000, 601000, 474000, 59000, 530000, 396000, 601000, 634000, 65000, 990000, 860000]
+                },
+                {name: 'UV',
+                type: 'line',
+                stack: 'Total',
+                areaStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgb(84, 255, 159)'
+                    },{
+                        offset: 1,
+                        color: 'rgb(0, 205, 102)'
+                    }])
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [80000, 102000, 136000, 142000, 149000, 158000, 165000, 171000, 194000, 223000, 270000, 290000]
+            }]
+        }
+        myChart5.setOption(option5)
+    </script>
+    <script>
+        var myChart6 = echarts.init(document.getElementById('c6'))
+        let dataAxis = ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023']
+        let data = [6067764, 7167764, 7528293, 8254381, 8610453, 6994520, 7541398, 7702583, 8356408, 9857322]
+        let yMax = 10000000
+        let dataShadow = []
+        for (let i = 0; i < data.length; i++) {
+            dataShadow.push(yMax)
+        }
+        option6 = {
+            xAxis: {
+                data: dataAxis,
+                axisLabel: {
+                    inside: true,
+                    color: '#fff'
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false
+                },
+                z: 10
+            },
+            yAxis: {
+                axisLine: {
+                    show: false
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    color: '#fff'
+                }
+            },
+            dataZoom: [{
+                type: 'inside'
+            }],
+            series: [{
+                type: 'bar',
+                showBackground: true,
+                itemStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                    { offset: 0, color: '#5ee3fd' },
+                    { offset: 0.5, color: '#3bb5f7' },
+                    { offset: 1, color: '#1c90fd' }
+                    ])
+                },
+                emphasis: {
+                    itemStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        { offset: 0, color: '#2378f7' },
+                        { offset: 0.7, color: '#2378f7' },
+                        { offset: 1, color: '#83bff6' }
+                    ])
+                    }
+                },
+                data: data
+                }
+            ]
+        }
+        // 实现点击缩放效果
+        const zoomSize = 6
+        myChart6.on('click', function (params) {
+            myChart6.dispatchAction({
+                type: 'dataZoom',
+                startValue: dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
+                endValue:
+                dataAxis[Math.min(params.dataIndex + zoomSize / 2, data.length - 1)]
+            })
+        })
+        myChart6.setOption(option6)
+    </script>
+    <script>
+        var myChart7 = echarts.init(document.getElementById('c7'))
+        option7 = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            legend: {
+                textStyle: {
+                    color: '#0bf9f7'
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value',
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                }
+            },
+            yAxis: {
+                type: 'category',
+                data: ['第一季度', '第二季度', '第三季度', '第四季度'],
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                }
+            },
+            series: [{
+                name: '食品',
+                type: 'bar',
+                stack: 'total',
+                label: {
+                    show: false
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [1788722, 5433232, 6201836, 3726177]
+                },
+                {name: '服装',
+                type: 'bar',
+                stack: 'total',
+                label: {
+                    show: false
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [3613815, 7266611, 8164589, 6244604]
+                },
+                {name: '家具',
+                type: 'bar',
+                stack: 'total',
+                label: {
+                    show: false
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [2175747, 3151681, 2935553, 1279521]
+                },
+                {name: '电子',
+                type: 'bar',
+                stack: 'total',
+                label: {
+                    show: false
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [3669367, 6395255, 7412662, 4580036]
+                },
+                {
+                name: '玩具',
+                type: 'bar',
+                stack: 'total',
+                label: {
+                    show: false
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [2294921, 5170169, 3291504, 4980502]
+                },
+                {
+                name: '饰品',
+                type: 'bar',
+                stack: 'total',
+                label: {
+                    show: false
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [684359, 1019287, 1145121, 461579]
+                }
+            ]
+        }
+        myChart7.setOption(option7)
+    </script>
+    <script>
+        var myChart8 = echarts.init(document.getElementById('c8'))
+        const hours = ['00', '01', '02', '03', '04', '05', '06','07', '08', '09', '10', '11','12', '13', '14', '15', '16', '17','18', '19', '20', '21', '22', '23']
+        const days = ['周六', '周五', '周四','周三', '周二', '周一', '周日']
+        const scData = [[0, 0, 50000], [0, 1, 10000], [0, 2, 10000], [0, 3, 10000], [0, 4, 10000], [0, 5, 10000], [0, 6, 10000], [0, 7, 10000], [0, 8, 10000], [0, 9, 10000], [0, 10, 10000], [0, 11, 20000], [0, 12, 40000], [0, 13, 10000], [0, 14, 10000], [0, 15, 30000], [0, 16, 40000], [0, 17, 60000], [0, 18, 40000], [0, 19, 40000], [0, 20, 30000], [0, 21, 30000], [0, 22, 20000], [0, 23, 50000], [1, 0, 70000], [1, 1, 10000], [1, 2, 10000], [1, 3, 10000], [1, 4, 10000], [1, 5, 10000], [1, 6, 10000], [1, 7, 10000], [1, 8, 10000], [1, 9, 10000], [1, 10, 50000], [1, 11, 20000], [1, 12, 20000], [1, 13, 60000], [1, 14, 90000], [1, 15, 110000], [1, 16, 60000], [1, 17, 70000], [1, 18, 80000], [1, 19, 120000], [1, 20, 50000], [1, 21, 50000], [1, 22, 70000], [1, 23, 20000], [2, 0, 10000], [2, 1, 10000], [2, 2, 10000], [2, 3, 10000], [2, 4, 10000], [2, 5, 10000], [2, 6, 10000], [2, 7, 10000], [2, 8, 10000], [2, 9, 10000], [2, 10, 30000], [2, 11, 20000], [2, 12, 10000], [2, 13, 90000], [2, 14, 80000], [2, 15, 100000], [2, 16, 60000], [2, 17, 50000], [2, 18, 50000], [2, 19, 50000], [2, 20, 70000], [2, 21, 40000], [2, 22, 20000], [2, 23, 40000], [3, 0, 70000], [3, 1, 30000], [3, 2, 10000], [3, 3, 10000], [3, 4, 10000], [3, 5, 10000], [3, 6, 10000], [3, 7, 10000], [3, 8, 10000], [3, 9, 10000], [3, 10, 50000], [3, 11, 40000], [3, 12, 70000], [3, 13, 140000], [3, 14, 130000], [3, 15, 120000], [3, 16, 90000], [3, 17, 50000], [3, 18, 50000], [3, 19, 100000], [3, 20, 60000], [3, 21, 40000], [3, 22, 40000], [3, 23, 10000], [4, 0, 10000], [4, 1, 30000], [4, 2, 10000], [4, 3, 10000], [4, 4, 10000], [4, 5, 10000], [4, 6, 10000], [4, 7, 10000], [4, 8, 10000], [4, 9, 20000], [4, 10, 40000], [4, 11, 40000], [4, 12, 20000], [4, 13, 40000], [4, 14, 40000], [4, 15, 140000], [4, 16, 120000], [4, 17, 10000], [4, 18, 80000], [4, 19, 50000], [4, 20, 30000], [4, 21, 70000], [4, 22, 30000], [4, 23, 10000], [5, 0, 20000], [5, 1, 10000], [5, 2, 10000], [5, 3, 30000], [5, 4, 10000], [5, 5, 10000], [5, 6, 15000], [5, 7, 20000], [5, 8, 20000], [5, 9, 10000], [5, 10, 40000], [5, 11, 10000], [5, 12, 50000], [5, 13, 100000], [5, 14, 50000], [5, 15, 70000], [5, 16, 110000], [5, 17, 60000], [5, 18, 10000], [5, 19, 50000], [5, 20, 30000], [5, 21, 40000], [5, 22, 20000], [5, 23, 10000], [6, 0, 10000], [6, 1, 10000], [6, 2, 10000], [6, 3, 10000], [6, 4, 10000], [6, 5, 10000], [6, 6, 10000], [6, 7, 10000], [6, 8, 10000], [6, 9, 10000], [6, 10, 10000], [6, 11, 10000], [6, 12, 20000], [6, 13, 10000], [6, 14, 30000], [6, 15, 40000], [6, 16, 10000], [6, 17, 10000], [6, 18, 10000], [6, 19, 10000], [6, 20, 10000], [6, 21, 20000], [6, 22, 20000], [6, 23, 60000]]
+        const title = []
+        const singleAxis = []
+        const series = []
+        days.forEach(function (day, idx) {
+            title.push({
+                textBaseline: 'middle',
+                top: ((idx + 0.5) * 100) / 7 + '%',
+                text: day,
+                textStyle: {
+                    color: '#0bf9f7',
+                }
+            })
+            singleAxis.push({
+                left: '15%',
+                type: 'category',
+                boundaryGap: false,
+                data: hours,
+                top: (idx * 100) / 7 + '%',
+                height: 100 / 7 - 10 + '%',
+                axisLabel: {
+                    interval: 2,
+                    color: '#ffffff',
+                }
+            })
+            series.push({
+                singleAxisIndex: idx,
+                coordinateSystem: 'singleAxis',
+                type: 'scatter',
+                data: [],
+                symbolSize: function (dataItem) {
+                    return dataItem[1] * 0.0002
+                }
+            })
+        })
+        scData.forEach(function (dataItem) {
+            series[dataItem[0]].data.push([dataItem[1], dataItem[2]])
+        })
+        option8 = {
+            tooltip: {
+                position: 'top'
+            },
+            title: title,
+            singleAxis: singleAxis,
+            series: series
+        }
+        myChart8.setOption(option8)
+    </script>
+</body>
+</html>
